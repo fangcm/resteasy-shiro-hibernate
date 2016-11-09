@@ -2,6 +2,7 @@
     <wb-module deploy-name="resteasy-shiro-hibernate">
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <property name="context-root" value="resteasy-shiro-hibernate"/>
         <property name="java-output-path" value="/resteasy-shiro-hibernate/target/classes"/>
     </wb-module>

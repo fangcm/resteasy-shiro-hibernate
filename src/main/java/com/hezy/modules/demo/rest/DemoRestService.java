@@ -1,4 +1,4 @@
-package com.hezy.modules.core.rest;
+package com.hezy.modules.demo.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
