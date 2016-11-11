@@ -3,9 +3,30 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 
+	<display-name>HEZY Web Server</display-name>
+
+	<context-param>
+		<param-name>resteasy.servlet.mapping.prefix</param-name>
+		<param-value>/</param-value>
+	</context-param>
+
 	<listener>
 		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
 	</listener>
+	<listener>
+		<listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>resteasy-servlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
 	<filter>
 		<filter-name>ShiroFilter</filter-name>
 		<filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
@@ -19,30 +40,5 @@
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
 
-	<context-param>
-		<param-name>resteasy.resources</param-name>
-		<param-value>com.hezy.modules.demo.rest.DemoRestService</param-value>
-	</context-param>
-
-	<context-param>
-		<param-name>resteasy.servlet.mapping.prefix</param-name>
-		<param-value>/</param-value>
-	</context-param>
-
-	<!-- 使用ResteasyBootstrap监听 ，自动注入rest -->
-	<listener>
-		<listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
-	</listener>
-
-
-	<servlet>
-		<servlet-name>resteasy-servlet</servlet-name>
-		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>resteasy-servlet</servlet-name>
-		<url-pattern>/*</url-pattern>
-	</servlet-mapping>
 
 </web-app>
